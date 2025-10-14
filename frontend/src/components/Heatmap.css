@@ -1,0 +1,25 @@
+/* Heatmap.css */
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  padding: 12px;
+}
+
+.heat-tile {
+  padding: 8px;
+  border-radius: 8px;
+  color: #222222;
+  cursor: pointer;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .12s;
+}
+
+.heat-tile:hover { transform: translateY(-3px); }
+
+.tile-symbol { font-weight: 700; font-size: 1rem; }
+.tile-price { font-size: .95rem; }
+.tile-change { font-size: .85rem; opacity: 0.9; }
