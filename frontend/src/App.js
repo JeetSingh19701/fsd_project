@@ -1,4 +1,3 @@
-// frontend/src/App.js
 import React, { useEffect, useState } from 'react';
 import { fetchLiveStocks, buyStock, sellStock, getPortfolio, getAIAdvice } from './api';
 import Heatmap from './components/Heatmap';
@@ -30,22 +29,22 @@ function App(){
     load();
     loadPortfolio();
     loadAdvice();
-    const iv = setInterval(() => load(), 10_000); // refresh every 10s for demo
+    const iv = setInterval(() => load(), 10000);
     return () => clearInterval(iv);
   }, []);
 
   const handleBuy = async (stock, qty) => {
-    const res = await buyStock({ symbol: stock.symbol, qty, price: stock.price });
+    await buyStock({ symbol: stock.symbol, qty, price: stock.price });
     await loadPortfolio();
     await loadAdvice();
-    alert('Bought: ' + JSON.stringify(res.trade || {}));
+    setSelected(null);
   };
 
   const handleSell = async (stock, qty) => {
-    const res = await sellStock({ symbol: stock.symbol, qty, price: stock.price });
+    await sellStock({ symbol: stock.symbol, qty, price: stock.price });
     await loadPortfolio();
     await loadAdvice();
-    alert('Sold: ' + JSON.stringify(res.trade || {}));
+    setSelected(null);
   };
 
   return (

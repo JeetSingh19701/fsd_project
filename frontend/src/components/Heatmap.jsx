@@ -1,15 +1,15 @@
-// frontend/src/components/Heatmap.jsx
+
 import React from 'react';
-import './Heatmap.css'; // styles below
+import './Heatmap.css'; 
 
 const getColor = (pChange) => {
   if (pChange > 0) {
     const alpha = Math.min(pChange / 5, 1);
-    return `rgba(0,200,83,${alpha})`; // green
+    return `rgba(0,200,83,${alpha})`; 
   }
   if (pChange < 0) {
     const alpha = Math.min(Math.abs(pChange) / 5, 1);
-    return `rgba(229,57,53,${alpha})`; // red
+    return `rgba(229,57,53,${alpha})`; 
   }
   return '#888';
 };

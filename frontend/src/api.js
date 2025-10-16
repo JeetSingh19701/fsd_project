@@ -1,5 +1,4 @@
-// frontend/src/api.js
-const API_ROOT = process.env.REACT_APP_API || 'http://localhost:5000';
+const API_ROOT = 'http://localhost:5000';
 
 export async function fetchLiveStocks() {
   const res = await fetch(`${API_ROOT}/api/stocks/live`);
