@@ -25,13 +25,15 @@ function App(){
     setAdvice(a.messages || []);
   };
 
-  useEffect(() => {
-    load();
-    loadPortfolio();
-    loadAdvice();
-    const iv = setInterval(() => load(), 10000);
-    return () => clearInterval(iv);
-  }, []);
+  .then(data => {
+  const grouped = data.reduce((acc, stock) => {
+    if (!acc[stock.sector]) acc[stock.sector] = [];
+    acc[stock.sector].push(stock);
+    return acc;
+  }, {});
+  setStocks(grouped);
+})
+
 
   const handleBuy = async (stock, qty) => {
     await buyStock({ symbol: stock.symbol, qty, price: stock.price });

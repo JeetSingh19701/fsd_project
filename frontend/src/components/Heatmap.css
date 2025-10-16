@@ -1,25 +1,103 @@
+/* Heatmap.css */
 
+/* Container wrapping all sectors */
+.heatmap-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: #0b0e11; /* dark TradingView style background */
+  min-height: 100vh;
+}
+
+/* Each sector block */
+.sector-block {
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 1rem;
+  background-color: #121619;
+}
+
+/* Sector title */
+.sector-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Grid for tiles inside a sector */
 .heatmap-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-  padding: 12px;
+  gap: 0.75rem;
 }
 
+/* Individual stock tile */
 .heat-tile {
-  padding: 8px;
-  border-radius: 8px;
-  color: #222222;
-  cursor: pointer;
-  min-height: 80px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: transform .12s;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.heat-tile:hover { transform: translateY(-3px); }
+/* Hover effect on each tile */
+.heat-tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
 
-.tile-symbol { font-weight: 700; font-size: 1rem; }
-.tile-price { font-size: .95rem; }
-.tile-change { font-size: .85rem; opacity: 0.9; }
+/* Stock symbol */
+.tile-symbol {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Stock price */
+.tile-price {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Stock percentage change */
+.tile-change {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .heatmap-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .heatmap-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+
+  .sector-title {
+    font-size: 1rem;
+  }
+
+  .tile-symbol {
+    font-size: 0.85rem;
+  }
+
+  .tile-price,
+  .tile-change {
+    font-size: 0.75rem;
+  }
+}
